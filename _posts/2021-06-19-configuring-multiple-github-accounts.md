@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Configuring Multiple GitHub Accounts"
+title: "Configuring Multiple GitHub Accounts on a Single Machine"
 date: 2021-06-19
 tags: [Git, GitHub, SSH]
 comments: true
