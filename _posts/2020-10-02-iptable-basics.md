@@ -55,7 +55,7 @@ Run the below command to check if iptables is installed successfully.
 sudo iptables -L -v --line-number
 ~~~
 
-![masscan](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/iptables-basic.png)
+![masscan](./images/iptables-basic.png)
 
 This command will list all rules from **filter table** (default table). 
 

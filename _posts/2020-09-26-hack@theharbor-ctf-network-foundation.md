@@ -12,11 +12,11 @@ Hack@TheHarbor was a good CTF. Point3 hosted the CTF on their Escalate platform.
 
 ### 1 - numberlesslove
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/numb1.png)
+![Crepe](./images/numb1.png)
 
 Download the file to our system, it was a tcpdump capture file contains network data packets.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/numb2.png)
+![Crepe](./images/numb2.png)
 
 Opened the file using **wireshark**
 
@@ -26,7 +26,7 @@ wireshark ee22a3b9fc2e8971c3bf812080d02714
 
 There is only few packets in the file and i found a packet with GET request to /flag.html.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/numb3.png)
+![Crepe](./images/numb3.png)
 
 Just select that packet and press **Ctrl+Alt+Shift+H** to follow HTTP Stream and you will get your flag.
 
@@ -57,13 +57,13 @@ Unlike other challenges this was an interesting challenge.
 
 Challenge description is given below.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon1.png)
+![Crepe](./images/lemon1.png)
 
 We were given an IP address and a file, which is a SSH auth log file.
 
 The web panel is for logging malicious behavior.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon2.png)
+![Crepe](./images/lemon2.png)
 
 So we have to analyse the SSH auth log file and we have to find the malicious behavior.
 
@@ -81,19 +81,19 @@ cat 0228a4fb0b05408ad4e1a32ea2137ca8 | grep -i "failed" | cut -d" " -f9,11 | sor
 
 Output : 
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon3.png)
+![Crepe](./images/lemon3.png)
 
 I concluded that a lot of failed login attempts are originated from **10.133.155.151** for **diffrent users**.
 
 Total failed attempts made by 10.133.155.151:
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon4.png)
+![Crepe](./images/lemon4.png)
 
 Next i have to find how many successful attempts he made to access the server with both password auth and public key auth.
 
 Luckily he is not successful with his password guessing.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon5.png)
+![Crepe](./images/lemon5.png)
 
 So
 
@@ -106,8 +106,8 @@ Submitted all these details on the web panel, we will get flag only if details a
 
 100% our analysis were correct and we got the flag.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon6.png)
+![Crepe](./images/lemon6.png)
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/lemon7.png)
+![Crepe](./images/lemon7.png)
 
 Thanks.

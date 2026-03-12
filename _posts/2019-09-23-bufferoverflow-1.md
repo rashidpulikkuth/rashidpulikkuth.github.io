@@ -11,13 +11,13 @@ This is a writeup on how i solved **BufferOverflow #1** from NACTF. I hope this 
 
 #### Lets start..
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.1.png)
+![Crepe](./images/bo1.1.png)
 
 Download the binary to our system, make it executable and run the binary.
 
 This binary is just printing the input back to us, behaving like a echo program.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.2.png)
+![Crepe](./images/bo1.2.png)
 
 Lets analyse the source code of this binary to know how it is working.
 
@@ -72,25 +72,25 @@ With **"A"*24**, the program got a segmentation fault.
 
 Lets check that with **gdb**.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.3.png)
+![Crepe](./images/bo1.3.png)
 
 So we got a seg fault due to EIP register contains unknow memory address.
 
 **EIP** is the instruction pointer. It points to (holds the address of) the first byte of the next instruction to be executed.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.4.png)
+![Crepe](./images/bo1.4.png)
 
 So lets try to control the value of eip, so that we can point eip to address of win() function and get our flag.
 
 Increase the A's to give input to binary.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.5.png)
+![Crepe](./images/bo1.5.png)
 
 By giving 28 A's and 4 B's to binary i was able to control eip register.
 
 Now eip contains 0x42424242 which is the hex value of BBBB.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.6.png)
+![Crepe](./images/bo1.6.png)
  
 Now we are controlling value of eip register and we have to make eip register points to address of win() function, so lets find the start address of win() function.
 
@@ -98,7 +98,7 @@ We can use **gdb** as well as **objdump**.
 
 Just type **disas win** in gdb.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.7.png)
+![Crepe](./images/bo1.7.png)
 
 Address of win() function is 0x080491b2.
 
@@ -110,6 +110,6 @@ Craft our payload accordingly.
 
 Lets do that to get flag.
 
-![Crepe](https://raw.githubusercontent.com/Masscan/masscan.github.io/master/assets/img/bo1.8.png)
+![Crepe](./images/bo1.8.png)
 
 Got it.... :)
