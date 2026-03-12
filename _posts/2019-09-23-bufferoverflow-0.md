@@ -11,13 +11,13 @@ This is a writeup on how i solved **BufferOverflow #0** from NACTF. I hope this 
 
 #### Lets start..
 
-![Crepe](./images/bo1.png)
+![Crepe](/assets/images/bo1.png)
 
 Download the binary to our system, make it executable and run the binary.
 
 This binary is just printing the input back to us, behaving like a echo program.
 
-![Crepe](./images/bo2.png)
+![Crepe](/assets/images/bo2.png)
 
 Lets analyse the source code of this binary to know how it is working.
 
@@ -66,7 +66,7 @@ A **SIGSEGV** is an error(signal) caused by an invalid memory reference or a seg
 
 So the vuln() function is executing first. vuln() using gets() which is very dangerous as you can see that on man page of gets.
 
-![Crepe](./images/bo3.png)
+![Crepe](/assets/images/bo3.png)
 
 The buffer size is 16.
 
@@ -74,6 +74,6 @@ I am giving  30 'A' s to this binary. so definitely there will be a segmentation
 
 Lets do that.
 
-![Crepe](./images/bo4.png)
+![Crepe](/assets/images/bo4.png)
 
 We got the flaaaaaag :)

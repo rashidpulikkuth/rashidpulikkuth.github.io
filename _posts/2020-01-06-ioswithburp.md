@@ -11,11 +11,11 @@ First of all ensure that your system and iOS device are on the same network.
 
 Now open Burpsuite on your system and listen on a port 9001 on all interface. (you can choose any port)
 
-![Crepe](./images/io1.png)
+![Crepe](/assets/images/io1.png)
 
 Now go to your iOS device and set a proxy under wifi option.
 
-![Crepe](./images/io2.png)
+![Crepe](/assets/images/io2.png)
 
 The next step is to download and install Burpsuite certificate for ssl interception, for that open **safari** and go to **http://burp** and download burp CA certificate.
 

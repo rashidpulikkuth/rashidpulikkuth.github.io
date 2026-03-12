@@ -11,13 +11,13 @@ This is a writeup on how i solved **BufferOverflow #2** from NACTF. I hope this 
 
 #### Lets start..
 
-![Crepe](./images/bo2.1.png)
+![Crepe](/assets/images/bo2.1.png)
 
 Download the binary to our system, make it executable and run the binary.
 
 Like the previous challenge, this binary is also just printing the input back to us, behaving like a echo program.
 
-![Crepe](./images/bo2.2.png)
+![Crepe](/assets/images/bo2.2.png)
 
 Lets analyse the source code of this binary to know how it is working.
 
@@ -80,7 +80,7 @@ Lets do it.
 
 Like before first step is to controll eip register. I was managed to control eip register as you can see on the below image.
 
-![Crepe](./images/bo2.3.png)
+![Crepe](/assets/images/bo2.3.png)
 
 So now we controlled eip, controlled eip with 4 B's (BBBB=0X42424242).
 
@@ -88,7 +88,7 @@ Next step is to find the address of win() function and overwrite eip with that s
 
 On  GDB type **disas win** and take the starting address of win() function.
 
-![Crepe](./images/bo2.4.png)
+![Crepe](/assets/images/bo2.4.png)
 
 adress of win() = 0x080491c2
 
@@ -122,12 +122,12 @@ print buffer
 
 Lets do the final thing....
 
-![Crepe](./images/bo2.5.png)
+![Crepe](/assets/images/bo2.5.png)
 
 So it is done.
 
 Lets do it in the remote server...
 
-![Crepe](./images/bo2.6.png)
+![Crepe](/assets/images/bo2.6.png)
 
 We got the flaaaaag ...    :)
