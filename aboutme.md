@@ -5,7 +5,8 @@ subtitle: Infosec enthusiast
 ---
 
 - Security Analyst @ [Bluecast](https://bluecast.tech/)
-- OSCP Certified
+- OSCP Certified | [View Badge on Credly](https://www.credly.com/users/rashid-p.0d778155/badges#credly)
+- AWS Certified Security – Specialty | [View Badge on Credly](https://www.credly.com/users/rashid-p.0d778155/badges#credly)
 - Synack Red Team Member
 - [ ![maSScan](https://app.hackthebox.com/badge/image/94996)](https://app.hackthebox.com/profile/94996)
 
