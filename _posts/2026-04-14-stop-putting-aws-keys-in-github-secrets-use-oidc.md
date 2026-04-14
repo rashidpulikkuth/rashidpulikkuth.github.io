@@ -273,11 +273,11 @@ Don't just stop using them. **Delete them.**
 
 ```bash
 # List access keys for the old IAM user
-aws iam list-access-keys --user-name github-actions-user
+aws iam list-access-keys --user-name <iam-user-name>
 
 # Delete each one
 aws iam delete-access-key \
-  --user-name github-actions-user \
+  --user-name <iam-user-name> \
   --access-key-id <AccessKeyId>
 
 # Remove them from GitHub Secrets too
