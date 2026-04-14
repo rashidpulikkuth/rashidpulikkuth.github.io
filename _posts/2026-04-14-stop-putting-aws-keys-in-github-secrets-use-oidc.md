@@ -241,7 +241,7 @@ jobs:
 
 > **This workflow is an example** to illustrate the concept — not a production-ready pipeline. The deploy steps are intentionally left as comments. The key point: look at what's **not** there — no `AWS_ACCESS_KEY_ID`, no `AWS_SECRET_ACCESS_KEY`, no secrets at all. Just a role ARN, which is a plain identifier, not a credential.
 
-##### Why those two `permissions` lines matter
+###### Why those two `permissions` lines matter
 
 **`id-token: write`** — This is the critical one for OIDC. It allows the workflow to request a signed JWT token from GitHub. Without it, GitHub will not issue the token and AWS authentication will fail entirely.
 
@@ -249,7 +249,7 @@ jobs:
 
 **`contents: read`** — Required by `actions/checkout`. The checkout action needs permission to read your repository code. Without it, the checkout step will fail.
 
-##### What `configure-aws-credentials` does under the hood
+###### What `configure-aws-credentials` does under the hood
 
 When this step runs:
 
