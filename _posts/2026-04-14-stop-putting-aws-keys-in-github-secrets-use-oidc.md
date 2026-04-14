@@ -9,9 +9,7 @@ published: true
 
 > *You've been doing it wrong. Here's how to fix it before it costs you.*
 
----
-
-## The Problem Nobody Talks About Until It's Too Late
+### The Problem Nobody Talks About Until It's Too Late
 
 It usually starts innocently. You're setting up your first GitHub Actions deployment pipeline. You generate an AWS IAM user, copy the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` into GitHub Secrets, paste the `aws-actions/configure-aws-credentials` step into your YAML, push — and it works.
 
@@ -29,9 +27,7 @@ This is how breaches happen. A misplaced `echo`, a third-party Action with a sup
 
 **There's a better way. It's called OIDC, and it takes about 15 minutes to set up.**
 
----
-
-## What Is OIDC and Why Should You Care?
+### What Is OIDC and Why Should You Care?
 
 **OpenID Connect (OIDC)** is an identity protocol that lets GitHub Actions prove its identity to AWS *without any stored credentials at all*.
 
@@ -66,11 +62,9 @@ GitHub Actions Runner
 
 The credentials that arrive in your workflow are **temporary**, **scoped**, and **automatically expire**. There is no secret to steal, rotate, or accidentally commit.
 
----
+### Setting It Up: Step by Step
 
-## Setting It Up: Step by Step
-
-### Step 1 — Create the OIDC Identity Provider in AWS
+#### Step 1: Create the OIDC Identity Provider in AWS
 
 First, tell AWS to trust GitHub as an identity provider. Do this once per AWS account.
 
@@ -90,7 +84,7 @@ aws iam create-open-id-connect-provider \
   --client-id-list sts.amazonaws.com
 ```
 
-### Step 2 — Create the IAM Role
+#### Step 2: Create the IAM Role
 
 Now create a role that GitHub Actions can assume. The trust policy is where the magic happens — this is where you lock down *exactly* which repos and branches can use this role.
 
@@ -178,9 +172,7 @@ aws iam attach-role-policy \
 
 Note the role ARN — you'll need it in the next step.
 
----
-
-### Step 3 — Update the GitHub Actions Workflow
+#### Step 3: Update the GitHub Actions Workflow
 
 Now wire it all together. The key changes from the "old way":
 
@@ -249,7 +241,7 @@ jobs:
 
 > **This workflow is an example** to illustrate the concept — not a production-ready pipeline. The deploy steps are intentionally left as comments. The key point: look at what's **not** there — no `AWS_ACCESS_KEY_ID`, no `AWS_SECRET_ACCESS_KEY`, no secrets at all. Just a role ARN, which is a plain identifier, not a credential.
 
-#### Why those two `permissions` lines matter
+##### Why those two `permissions` lines matter
 
 **`id-token: write`** — This is the critical one for OIDC. It allows the workflow to request a signed JWT token from GitHub. Without it, GitHub will not issue the token and AWS authentication will fail entirely.
 
@@ -257,7 +249,7 @@ jobs:
 
 **`contents: read`** — Required by `actions/checkout`. The checkout action needs permission to read your repository code. Without it, the checkout step will fail.
 
-#### What `configure-aws-credentials` does under the hood
+##### What `configure-aws-credentials` does under the hood
 
 When this step runs:
 
@@ -275,9 +267,7 @@ It automatically:
 
 All of this happens invisibly — no keys, no secrets, no manual token handling.
 
----
-
-### Step 4 — Delete Your Old IAM User Credentials
+#### Step 4: Delete Your Old IAM User Credentials
 
 Don't just stop using them. **Delete them.**
 
@@ -294,9 +284,7 @@ aws iam delete-access-key \
 # Settings → Secrets and variables → Actions → Delete
 ```
 
----
-
-## Before vs After
+#### Before vs After
 
 | | Static IAM Keys | OIDC |
 | --- | --- | --- |
@@ -309,9 +297,7 @@ aws iam delete-access-key \
 | **Audit trail** | Limited | Full STS call logs in CloudTrail |
 | **Setup complexity** | Low | Medium (one-time) |
 
----
-
-## Wrapping Up
+#### Wrapping Up
 
 Switching to OIDC is one of those rare security improvements that is also simpler to maintain than what it replaces. No secrets to rotate. No IAM users to audit. No keys sitting in GitHub waiting to be leaked.
 
@@ -325,5 +311,3 @@ The 15-minute setup cost pays off the first time you don't have to explain a cre
 4. Deleted the old IAM user keys
 
 That's it. Your CI pipeline now has zero long-lived credentials, and AWS knows exactly where every request is coming from.
-
----
