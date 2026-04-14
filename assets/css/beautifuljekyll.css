@@ -992,3 +992,7 @@ pre {
   display: block;
   margin: 0 auto;
 }
+
+.highlighter-rouge {
+  margin-bottom: 1.25rem;
+}
