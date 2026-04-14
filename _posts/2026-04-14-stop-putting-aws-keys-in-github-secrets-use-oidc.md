@@ -284,7 +284,7 @@ aws iam delete-access-key \
 # Settings → Secrets and variables → Actions → Delete
 ```
 
-#### Before vs After
+### Before vs After
 
 | | Static IAM Keys | OIDC |
 | --- | --- | --- |
@@ -297,7 +297,7 @@ aws iam delete-access-key \
 | **Audit trail** | Limited | Full STS call logs in CloudTrail |
 | **Setup complexity** | Low | Medium (one-time) |
 
-#### Wrapping Up
+### Wrapping Up
 
 Switching to OIDC is one of those rare security improvements that is also simpler to maintain than what it replaces. No secrets to rotate. No IAM users to audit. No keys sitting in GitHub waiting to be leaked.
 
