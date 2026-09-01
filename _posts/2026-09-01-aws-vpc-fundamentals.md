@@ -7,7 +7,7 @@ comments: true
 published: true
 ---
 
-Every AWS workload — EC2, RDS, Lambda — lives inside a **Virtual Private Cloud (VPC)**. Get the networking wrong and nothing connects. Get it right once, and the same patterns scale from a single server to production multi-tier architectures.
+Many AWS workloads, such as **EC2** and **RDS**, run within a **Virtual Private Cloud (VPC)**. **Lambda** functions can optionally be connected to a VPC when they need access to private VPC resources. Get the networking wrong and nothing connects. Get it right once, and the same patterns scale from a single server to production multi-tier architectures.
 
 This guide walks through VPC networking in three layers:
 
