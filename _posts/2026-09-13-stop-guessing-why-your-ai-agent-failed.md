@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Stop Guessing Why Your AI Agent Failed — LangChain + LangSmith"
+title: "Stop Guessing Why Your AI Agent Failed: LangChain + LangSmith"
 date: 2026-09-13 08:00:00 +0000
 tags: [LangChain, LangSmith, LLM, Agents]
 comments: true
@@ -44,7 +44,7 @@ No. That's a common misconception. LangSmith works with **any** LLM app, raw Ope
 
 ## A complete example: a tool-calling agent, traced end-to-end (TypeScript)
  
-Here's a fuller example that's closer to a real app — an agent with two tools (a weather lookup and a unit converter), fully traced in LangSmith. This shows exactly what LangSmith is actually useful for: seeing every tool call, its input/output, and the model's reasoning between them.
+Here's a fuller example that's closer to a real app, an agent with two tools (a weather lookup and a unit converter), fully traced in LangSmith. This shows exactly what LangSmith is actually useful for: seeing every tool call, its input/output, and the model's reasoning between them.
  
 ### 1. Install dependencies
  
